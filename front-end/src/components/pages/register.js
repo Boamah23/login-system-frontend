@@ -1,7 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
-import "../style/register.css";
+import "../../style/register.css";
 import { Form, Icon, Input, Button } from "antd";
 import { DatePicker } from "antd";
 import moment from "moment";

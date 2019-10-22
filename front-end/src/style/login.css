@@ -1,5 +1,5 @@
 .login-form {
-    max-width: 500px;
+    min-width: 500px;
   }
 
   .login-form-forgot {
@@ -11,6 +11,8 @@
   }
 
   .form{
+    margin: 0 auto;
+    display: flex;
     justify-content: center;
     height: 600px;
     width: 100%;
