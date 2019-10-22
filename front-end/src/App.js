@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import Login from './components/pages/login';
 import Register from './components/pages/register';
@@ -11,6 +10,7 @@ function App() {
     <Router>
       <Route path="/" component={Login}/>
     </Router>
+
   );
 }
 
