@@ -1,12 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
-
-import "../style/register.css";
-import { Form, Icon, Input, Button, Upload } from "antd";
-
 import "../../style/register.css";
-import { Form, Icon, Input, Button } from "antd";
-
+import { Form, Icon, Input, Button, message, Upload } from "antd";
 import { DatePicker } from "antd";
 import moment from "moment";
 
@@ -31,11 +26,12 @@ const props = {
   }
 };
 
+
+
 function Register() {
 
 return (
   <div className="register">
-    <div className="title">Register</div>
     <Form className="register-form">
       <Form.Item>
         <Input placeholder="First name" />
@@ -47,7 +43,6 @@ return (
         <div>
         <div><h4>Date of birth:</h4></div>
           <DatePicker
-            placeholder="Date of birth"
             defaultValue={moment("01/01/2019", dateFormat)}
             Format={dateFormat}
           />
@@ -59,11 +54,19 @@ return (
           placeholder="Email"
         />
       </Form.Item>
-      <Upload {...props}>
-        <Button>
-          <Icon type="upload" /> Click to Upload
-        </Button>
-      </Upload>
+      <Form.Item>
+        <Upload {...props}>
+          <Button>
+            <Icon type="upload" /> Upload Profile Image
+          </Button>
+        </Upload>
+      </Form.Item>
+      <Form.Item>
+        <Input
+          prefix={<Icon type="global" styale={{color: "grey"}} />}
+          placeholder="Country"
+        />
+      </Form.Item>
       <Form.Item>
         <Input
           prefix={<Icon type="user" style={{ color: "grey" }} />}
