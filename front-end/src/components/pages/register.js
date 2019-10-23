@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import "../../style/register.css";
-import { Form, Icon, Input, Button } from "antd";
+import { Form, Icon, Input, Button, message, Upload } from "antd";
 import { DatePicker } from "antd";
 import moment from "moment";
 
@@ -30,7 +30,6 @@ function Register() {
 
 return (
   <div className="register">
-    <div className="title">Register</div>
     <Form className="register-form">
       <Form.Item>
         <Input placeholder="First name" />
