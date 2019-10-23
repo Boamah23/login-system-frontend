@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import "../style/register.css";
 import { Form, Icon, Input, Button, Upload } from "antd";
