@@ -17,3 +17,8 @@
     height: 600px;
     width: 100%;
   }
+
+  .title{
+    margin: 10px;
+    text-align: center;
+  }
