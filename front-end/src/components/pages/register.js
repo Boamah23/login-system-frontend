@@ -3,7 +3,8 @@ import "antd/dist/antd.css";
 import "../../style/register.css";
 import { Form, Icon, Input, Button, message, Upload } from "antd";
 import { DatePicker } from "antd";
-import moment from "moment";
+import { Link } from 'react-router-dom';
+
 
 
 const dateFormat = "DD/MM/YYYY";
@@ -26,6 +27,8 @@ const props = {
   }
 };
 
+
+
 function Register() {
 
 return (
@@ -38,14 +41,10 @@ return (
         <Input placeholder="Last name" />
       </Form.Item>
       <Form.Item>
-        <div>
-        <div><h4>Date of birth:</h4></div>
           <DatePicker
             placeholder="Date of birth"
-            defaultValue={moment("01/01/2019", dateFormat)}
             Format={dateFormat}
           />
-        </div>
       </Form.Item>
       <Form.Item>
         <Input
@@ -53,11 +52,19 @@ return (
           placeholder="Email"
         />
       </Form.Item>
-      <Upload {...props}>
-        <Button>
-          <Icon type="upload" /> Click to Upload
-        </Button>
-      </Upload>
+      <Form.Item>
+        <Upload {...props}>
+          <Button>
+            <Icon type="upload" /> Upload Profile Image
+          </Button>
+        </Upload>
+      </Form.Item>
+      <Form.Item>
+        <Input
+          prefix={<Icon type="global" styale={{color: "grey"}} />}
+          placeholder="Country"
+        />
+      </Form.Item>
       <Form.Item>
         <Input
           prefix={<Icon type="user" style={{ color: "grey" }} />}
@@ -67,16 +74,18 @@ return (
       <Form.Item>
         <Input
           prefix={<Icon type="lock" style={{ color: "grey" }} />}
-          placeholder="password"
+          placeholder="Password"
         />
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="register-btn">
           Register
         </Button>
-        <Button type="link" className="btn">
-          Already have an account? Login
-        </Button>
+        <Link to="/">
+          <Button type="link" className="btn">
+            Already have an account? Login
+          </Button>
+        </Link>
       </Form.Item>
     </Form>
   </div>
