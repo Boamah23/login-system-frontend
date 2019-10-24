@@ -76,16 +76,18 @@ return (
       <Form.Item>
         <Input
           prefix={<Icon type="lock" style={{ color: "grey" }} />}
-          placeholder="password"
+          placeholder="Password"
         />
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="register-btn">
           Register
         </Button>
-        <Button type="link" className="btn">
-          Already have an account? Login
-        </Button>
+        <Link to="/">
+          <Button type="link" className="btn">
+            Already have an account? Login
+          </Button>
+        </Link>
       </Form.Item>
     </Form>
   </div>
