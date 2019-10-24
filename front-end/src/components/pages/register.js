@@ -3,7 +3,8 @@ import "antd/dist/antd.css";
 import "../../style/register.css";
 import { Form, Icon, Input, Button, message, Upload } from "antd";
 import { DatePicker } from "antd";
-import moment from "moment";
+import { Link } from 'react-router-dom';
+
 
 
 const dateFormat = "DD/MM/YYYY";
@@ -40,13 +41,10 @@ return (
         <Input placeholder="Last name" />
       </Form.Item>
       <Form.Item>
-        <div>
-        <div><h4>Date of birth:</h4></div>
           <DatePicker
-            defaultValue={moment("01/01/2019", dateFormat)}
+            placeholder="Date of birth"
             Format={dateFormat}
           />
-        </div>
       </Form.Item>
       <Form.Item>
         <Input
