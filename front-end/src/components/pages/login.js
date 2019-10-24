@@ -2,12 +2,12 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import '../../style/login.css';
 import { Form, Icon, Input, Button} from 'antd';
+import { Link } from 'react-router-dom';
 
   
  function Login() {
      return (
         <div className="form">
-            <div className="title">Login</div>
             <Form className="login-form">
                 <Form.Item>
                 <Input
@@ -23,19 +23,20 @@ import { Form, Icon, Input, Button} from 'antd';
                     placeholder="Password"
                 />
                 </Form.Item>
-        
-                <Button type="link" className="login-form-forgot">
-                Forgot password?
-                </Button>
-        
+                <Link to="">
+                    <Button type="link" className="login-form-forgot">
+                    Forgot password?
+                    </Button>
+                </Link>
                 <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     Login
                 </Button>
-        
-                <Button type="link" className="btn">
-                    Register
-                </Button>
+                <Link to="/register">
+                    <Button type="link" className="btn">
+                        Register
+                    </Button>
+                </Link>
                 </Form.Item>
         </Form>
         </div>
