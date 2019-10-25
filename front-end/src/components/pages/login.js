@@ -54,7 +54,9 @@ function Login(props) {
             method: "POST",
             body: request,
             headers: {
-                "Content-Type": "application/json"
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization" : "Basic " + window.btoa(username + ':' + password)
             }
         })
             .then(data => {
