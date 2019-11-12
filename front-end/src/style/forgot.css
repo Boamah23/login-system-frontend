@@ -1,0 +1,15 @@
+.forgot-form{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    height: 600px;
+    width: 100%;
+  }
+
+  .register-btn {
+    width: 100%;
+  }
+
+  .forgot {
+    min-width: 500px;
+  }
