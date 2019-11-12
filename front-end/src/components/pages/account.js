@@ -123,7 +123,11 @@ class AccountInfo extends React.Component {
                     rules: [
                       { require: true, message: "Please input first name" }
                     ]
-                  })(<Input placeholder="Enter name" />)}
+                  })(<Input/>)}
+                </Form.Item>
+
+                <Form.Item>
+                    <TextArea autoSize={{ minRows: 3, maxRows: 5 }}/>
                 </Form.Item>
 
                 <Form.Item {...tailFormItemLayout}>
