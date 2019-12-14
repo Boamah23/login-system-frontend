@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 import '../../style/login.css';
 import { Form, Icon, Input, Button, Alert } from 'antd';
@@ -13,7 +13,8 @@ class LoginForm extends React.Component {
     showError: false,
     errorCode: 400,
     responseStatus: "nothing",
-    errorMessage: "" 
+    errorMessage: "",
+    isDeleted: false 
   };
   
 
@@ -60,7 +61,8 @@ checkResponse = (data) => {
       errorMessage: data.message,
       showSuccess: false,
       showError: true,
-      responseStatus: "Error"
+      responseStatus: "Error",
+      isDeleted: true
     });
   }
 }
@@ -115,6 +117,7 @@ checkResponse = (data) => {
                 </Button>
                 Or <a href="/">register now!</a>
               </Form.Item>
+              {this.state.isDeleted ? <Alert message="This is an error message" type="error"/>  :null}
               {this.state.showSuccess ? <Alert message="account logged successfully" type="success" /> :null}
               {this.state.showError ? <Alert message={this.state.errorMessage} type="error" /> :null} 
           </Form>

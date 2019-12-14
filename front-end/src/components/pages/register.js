@@ -3,7 +3,6 @@ import "antd/dist/antd.css";
 import "../../style/register.css";
 import { Form, Icon, Input, Button, message, Upload,  Row, Col } from "antd";
 import { DatePicker } from "antd";
-import { Link } from 'react-router-dom';
 
 
 const props = {
