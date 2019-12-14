@@ -2,7 +2,6 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import '../../style/login.css';
 import { Form, Icon, Input, Button, Alert } from 'antd';
-import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
 
@@ -109,7 +108,7 @@ checkResponse = (data) => {
               </Form.Item>
 
               <Form.Item>
-                <a className="login-form-forgot" href="">
+                <a className="login-form-forgot" href="/forgotPass">
                   Forgot password
                 </a>
                 <Button type="primary" htmlType="submit" className="login-form-button">
