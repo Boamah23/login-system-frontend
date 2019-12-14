@@ -1,0 +1,11 @@
+.forgot{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    height: 600px;
+    width: 100%;
+}
+
+.forgot-form{
+    min-width: 500px;
+}
