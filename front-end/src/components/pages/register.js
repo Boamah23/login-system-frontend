@@ -120,108 +120,111 @@ handleEmail = ()=> {
     };
 
     return (
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
 
-        <Form.Item >
-          {getFieldDecorator('First Name', {
-            rules: [{ required: true, message: 'Please input first name!' }],
-          })(            
-              <Input placeholder="Enter first name" />
-          )}
+      <div className="register">
+        <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register-form">
+
+          <Form.Item >
+            {getFieldDecorator('First Name', {
+              rules: [{ required: true, message: 'Please input first name!' }],
+            })(            
+                <Input placeholder="Enter first name" />
+            )}
+          </Form.Item>
+
+          <Form.Item >
+            {getFieldDecorator('Last Name', {
+              rules: [{ required: true, message: 'Please input last name!' }],
+            })(            
+                <Input placeholder="Enter last name" />
+            )}
+          </Form.Item>
+          
+          <Form.Item hasFeedback>
+            {getFieldDecorator('date-picker',{
+              rules: [
+                { 
+                  type: 'object', 
+                  required: true, 
+                  message: 'Please select time!' 
+                }],
+            })(<DatePicker placeholder="select date of birth"/>)}
         </Form.Item>
 
-        <Form.Item >
-          {getFieldDecorator('Last Name', {
-            rules: [{ required: true, message: 'Please input last name!' }],
-          })(            
-              <Input placeholder="Enter last name" />
-          )}
-        </Form.Item>
-        
-        <Form.Item hasFeedback>
-          {getFieldDecorator('date-picker',{
-            rules: [
-              { 
-                type: 'object', 
-                required: true, 
-                message: 'Please select time!' 
-              }],
-          })(<DatePicker placeholder="select date of birth"/>)}
-      </Form.Item>
+          
+          <Form.Item hasFeedback >
+            {getFieldDecorator('email', {
+              rules: [
+                {
+                  type: 'email',
+                  message: 'The input is not valid E-mail!',
+                },
+                {
+                  required: true,
+                  message: 'Please input your E-mail!',
+                }],
+            })(<Input prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" />)}
+          </Form.Item>
 
-        
-        <Form.Item hasFeedback >
-          {getFieldDecorator('email', {
-            rules: [
-              {
-                type: 'email',
-                message: 'The input is not valid E-mail!',
-              },
-              {
-                required: true,
-                message: 'Please input your E-mail!',
-              }],
-          })(<Input prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" />)}
+          <Form.Item>
+          <Upload {...props}>
+            <Button>
+              <Icon type="upload" /> Upload Profile Image
+            </Button>
+          </Upload>
         </Form.Item>
 
         <Form.Item>
-        <Upload {...props}>
-          <Button>
-            <Icon type="upload" /> Upload Profile Image
-          </Button>
-        </Upload>
-      </Form.Item>
-
-      <Form.Item>
-        {getFieldDecorator('country', {
-          rules: [
-            { 
-              required: true, 
-              message: 'Please input last name!'
-            }],
-        })(<Input prefix={<Icon type="global" style={{color: "grey"}} />} placeholder="Country"/>)}
-      </Form.Item>
-
-      <Form.Item hasFeedback>
-        {getFieldDecorator('username', {
+          {getFieldDecorator('country', {
             rules: [
               { 
                 required: true, 
-                message: 'Please input username!'
+                message: 'Please input last name!'
               }],
-          })(<Input prefix={<Icon type="user" style={{ color: "grey" }} />} placeholder="Username"/>)}
-      </Form.Item>
-        
+          })(<Input prefix={<Icon type="global" style={{color: "grey"}} />} placeholder="Country"/>)}
+        </Form.Item>
+
         <Form.Item hasFeedback>
-          {getFieldDecorator('password', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your password!',
-              }],
-          })(<Input.Password placeholder="password"/>)}
+          {getFieldDecorator('username', {
+              rules: [
+                { 
+                  required: true, 
+                  message: 'Please input username!'
+                }],
+            })(<Input prefix={<Icon type="user" style={{ color: "grey" }} />} placeholder="Username"/>)}
         </Form.Item>
+          
+          <Form.Item hasFeedback>
+            {getFieldDecorator('password', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your password!',
+                }],
+            })(<Input.Password placeholder="password" prefix={<Icon type="lock" style={{ color: "grey"}}/>}/>)}
+          </Form.Item>
 
-        <Form.Item extra="We must make sure that your are a human.">
-          <Row gutter={8}>
-            <Col span={12}>
-              {getFieldDecorator('captcha', {
-                rules: [{ required: true, message: 'Please input the captcha you got!' }],
-              })(<Input placeholder="Captcha" />)}
-            </Col>
-            <Col span={12}>
-              <Button>Get captcha</Button>
-            </Col>
-          </Row>
-        </Form.Item>
+          <Form.Item extra="We must make sure that your are a human.">
+            <Row gutter={8}>
+              <Col span={12}>
+                {getFieldDecorator('captcha', {
+                  rules: [{ required: true, message: 'Please input the captcha you got!' }],
+                })(<Input placeholder="Captcha" />)}
+              </Col>
+              <Col span={12}>
+                <Button>Get captcha</Button>
+              </Col>
+            </Row>
+          </Form.Item>
 
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Register
-          </Button>
-        </Form.Item>
+          <Form.Item {...tailFormItemLayout} className="register-btn">
+            <Button type="primary" htmlType="submit">
+              Register
+            </Button>
+          </Form.Item>
 
-      </Form>
+        </Form>
+      </div>
     );
   }
 }
