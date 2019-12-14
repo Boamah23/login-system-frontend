@@ -115,7 +115,7 @@ checkResponse = (data) => {
                   Log in
                 </Button>
                 <div></div>
-                Or <a href="/">register now!</a>
+                Or <a href="/register">register now!</a>
               </Form.Item>
               {this.state.isDeleted ? <Alert message="This is an error message" type="error"/>  :null}
               {this.state.showSuccess ? <Alert message="account logged successfully" type="success" /> :null}
