@@ -60,7 +60,7 @@ class ResetPass extends React.Component {
 
             <div className="forgot">
                 <Form {...formItemLayout} onSubmit={this.handleSubmit} className="forgot-form">
-                    <h1 style={{textAlign: 'center'}}>Reset Password</h1>
+                    <h2 style={{textAlign: 'center'}}>Reset Password</h2>
 
                     <FormItem hasFeedback>
                         {getFieldDecorator('password', {

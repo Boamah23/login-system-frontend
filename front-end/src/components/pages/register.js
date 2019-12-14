@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import "../../style/register.css";
-import { Form, Icon, Input, Button, message, Upload,  Row, Col } from "antd";
+import { Form, Icon, Input, Button, message, Upload,  Row, Col, Select } from "antd";
 import { DatePicker } from "antd";
 
 
@@ -93,6 +93,7 @@ handleEmail = ()=> {
 }
 
   render() {
+    const { Option } = Select;
 
     const { getFieldDecorator } = this.props.form;
 
@@ -123,7 +124,7 @@ handleEmail = ()=> {
 
       <div className="register">
         <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register-form">
-
+        <h2 style={{textAlign: 'center'}}>Register</h2>
           <Form.Item >
             {getFieldDecorator('First Name', {
               rules: [{ required: true, message: 'Please input first name!' }],
@@ -202,6 +203,38 @@ handleEmail = ()=> {
                   message: 'Please input your password!',
                 }],
             })(<Input.Password placeholder="password" prefix={<Icon type="lock" style={{ color: "grey"}}/>}/>)}
+          </Form.Item>
+
+          <Form.Item>
+            <Row gutter={8}>
+              <Col span={12}>
+                  <Select defaultValue="Security Question 1" >
+                      <Option value="Mothers maiden name">Mothers maiden name</Option>
+                      <Option value="Model of first car">Model of first car</Option>
+                      <Option value="Favouite movie">Favouite movie</Option>
+                      <Option value="Road you grew up on">Road you grew up on</Option>
+                  </Select>
+              </Col>
+              <Col span={12}>
+                  <Input placeholder="Security answer 1"/>
+              </Col>
+            </Row>
+          </Form.Item>
+
+          <Form.Item>
+            <Row gutter={8}>
+              <Col span={12}>
+                  <Select defaultValue="Security Question 2" >
+                      <Option value="Name of primary school">Name of primary school</Option>
+                      <Option value="Place of birth">Place of birth</Option>
+                      <Option value="Favourite colour">Favourite colour</Option>
+                      <Option value="Favourite book">Favourite book</Option>
+                  </Select>
+              </Col>
+              <Col span={12}>
+                  <Input placeholder="Security answer 2"/>
+              </Col>
+            </Row>
           </Form.Item>
 
           <Form.Item extra="We must make sure that your are a human.">

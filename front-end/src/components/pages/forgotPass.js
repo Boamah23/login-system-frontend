@@ -38,7 +38,7 @@ class ForgotPass extends React.Component {
 
             <div className="forgot">
                 <Form {...formItemLayout} onSubmit={this.handleSubmit} className="forgot-form">
-                    <h1 style={{textAlign: 'center'}}>Forgot Password</h1>
+                    <h2 style={{textAlign: 'center'}}>Forgot Password</h2>
                     <FormItem hasFeedback>
                         {getFieldDecorator('Email', {
                             rules: [{ require: true, message: 'Please input email'}]

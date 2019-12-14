@@ -74,7 +74,7 @@ checkResponse = (data) => {
         return (
           <div className="form">
             <Form onSubmit={this.handleSubmit} className="login-form">
-              
+            <h2 style={{textAlign: 'center'}}>Login</h2>
               <Form.Item hasFeedback validateStatus={this.state.responseStatus} help={this.state.errorMessage}>
                 {getFieldDecorator('username', {
                   rules:[{
@@ -114,6 +114,7 @@ checkResponse = (data) => {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                   Log in
                 </Button>
+                <div></div>
                 Or <a href="/">register now!</a>
               </Form.Item>
               {this.state.isDeleted ? <Alert message="This is an error message" type="error"/>  :null}
