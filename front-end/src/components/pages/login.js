@@ -108,7 +108,7 @@ checkResponse = (data) => {
               </Form.Item>
 
               <Form.Item>
-                <a className="login-form-forgot" href="/forgotPass">
+                <a className="login-form-forgot" href="/forgotPassword">
                   Forgot password
                 </a>
                 <Button type="primary" htmlType="submit" className="login-form-button">
