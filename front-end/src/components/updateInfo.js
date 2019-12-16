@@ -1,11 +1,10 @@
 import React from "react";
 import "antd/dist/antd.css";
-import "../index.css";
+import "../style/account.css";
 import {
   Input,
   Form,
   Button,
-  DatePicker,
   Icon,
   Upload,
   message,
@@ -29,10 +28,44 @@ const props = {
       }
     },
   };
+  
 
-function random(){
+class UpdateInfo extends React.Component{
+
+  constructor() {
+    super();
+    this.state = {
+      firstName: "",
+      lastName: "",
+      about: "",
+      email: "",
+      countryID: "",
+      profileImageURL: ""
+    };
+  }
+
+  handleChange = e => {
+    this.setState({[e.target.name]:e.target.value})
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const data = { firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, countryID:this.state.countryID, profileImageURL:this.state.profileImageURL }
+        fetch('http://localhost:3000/api/v1.0/users/updateAccount', { 
+          method: 'PUT',
+          headers: {
+            'Accept' : 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+    }).then(res => res.json())
+    .catch(error => console.error("Error:", error))
+    .then(response => console.log("Success:", response))
+};
+  render(){
     return(
-    <Form>
+    <div className="account-form">
+    <Form onSubmit={this.handleSubmit}>
         <h1 style={{textAlign: 'center'}}>Update account information</h1>
     <Form.Item>
         <Avatar size={64} icon="user" />
@@ -42,45 +75,42 @@ function random(){
         >Change profile picture</Button>
     </Form.Item>
     <Form.Item >           
-          <Input placeholder="Enter first name" />
+          <Input name="firstName" placeholder="Enter first name" onChange={this.handleChange}/>
     </Form.Item>
 
     <Form.Item >           
-          <Input placeholder="Enter last name" />
+          <Input name="lastName" placeholder="Enter last name" onChange={this.handleChange}/>
     </Form.Item>
     
     <Form.Item>
-        <DatePicker placeholder="select date of birth"/>
-  </Form.Item>
-
-    
-    <Form.Item>
-        <Input prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" />
+        <Input name="email" prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" onChange={this.handleChange}/>
     </Form.Item>
 
     <Form.Item>
         <Upload {...props}>
         <Button>
-            <Icon type="upload" /> Upload Profile Image
+            <Icon name="profileImageURL" type="upload" onChange={this.handleChange}/> Upload Profile Image
         </Button>
         </Upload>
     </Form.Item>
 
     <Form.Item>
-        <Input prefix={<Icon type="global" style={{color: "grey"}} />} placeholder="Country"/>
+        <Input name="about" placeholder="About yourself...." onChange={this.handleChange}/>
     </Form.Item>
 
-    <Form.Item hasFeedback>
-        <Input prefix={<Icon type="user" style={{ color: "grey" }} />} placeholder="Username"/>
+    <Form.Item>
+        <Input name="countryID" prefix={<Icon type="global" style={{color: "grey"}} />} placeholder="Country" onChange={this.handleChange}/>
     </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button className="update-btn" type="primary" htmlType="submit">
             Update account information
           </Button>
         </Form.Item>
       </Form>
+      </div>
     );
+    }
 }
 
-export default random;
+export default UpdateInfo;
