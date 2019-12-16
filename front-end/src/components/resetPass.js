@@ -5,8 +5,8 @@ import FormItem from "antd/lib/form/FormItem";
 
 function passwordReset(){
     return(
-        <div className="forgot">
-        <Form className="forgot-form">
+        <div className="account-form">
+        <Form>
             <h1 style={{textAlign: 'center'}}>Reset Password</h1>
             <FormItem>
                     <Input placeholder="Enter Email" prefix={<Icon type="mail" style={{color: "grey"}}/>}/>
@@ -20,8 +20,8 @@ function passwordReset(){
                     <Input.Password placeholder="Confirm Password" prefix={<Icon type="mail" style={{color: "grey"}}/>}/>
             </FormItem>
 
-            <Form.Item className="register-btn">
-                <Button type="primary" htmlType="submit">
+            <Form.Item>
+                <Button className="update-btn" type="primary" htmlType="submit">
                     Update Password
                 </Button>
             </Form.Item>
