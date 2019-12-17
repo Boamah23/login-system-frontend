@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import '../../style/login.css';
-import { Form, Icon, Input, Button, Alert } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 
 class LoginForm extends React.Component {
 
