@@ -2,9 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import "../../style/register.css";
 import { Form, Icon, Input, Button, message, Upload,  Row, Col, Select } from "antd";
-import { DatePicker } from "antd";
-
-
+import { DatePicker } from 'antd';
 const props = {
   name: 'file',
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -26,110 +24,56 @@ const props = {
 
 class RegisterForm extends React.Component {
 
-  state = {
-    confirmDirty: false,
-    addedSucessfully: false,
-    showSuccess: false,
-    showError: false,
-    errorCode: 400,
-    responseStatus: "nothing",
-    errorMessage: "" 
-  };
+  constructor() {
+    super();
+    this.state = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      countryID: "",
+      profileImageURL: "",
+      password: "",
+      username: "",
+      birthDate: new Date()
+    };
+  }
+
+  handleChange = e => {
+    this.setState({[e.target.name]:e.target.value})
+  }
+
+  thisonChange = date => this.setState({birthDate: date})
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-
-        fetch('http://localhost:3000/api/v1.0/users', { 
-          method: 'POST',
-          headers: {
-            'Accept' : 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({values})
-    }).then(res => {
-      if(res.ok)
-        this.setState({addedSucessfully:true})
-      else 
-        this.setState({ 
-          addedSucessfully:false,
-          errorCode: res.status 
-        });
-        return res.json()
-    }).then(data => this.checkResponse(data))
-  }
-}); 
+    const data = { firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, countryID:this.state.countryID, profileImageURL:this.state.profileImageURL, password:this.state.password, username:this.state.username, birthDate:this.state.birthDate  }
+    fetch('http://localhost:3000/api/v1.0/users/register', { 
+      method: 'POST',
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+}).then(res => res.json())
+.catch(error => console.error("Error:", error))
+.then(response => console.log("Success:", response))
 };
-
-handleEmail = ()=> {
-  this.setState({responseStatus:"nothing"})
-}; 
-
-
-  handleConfirmBlur = e => {
-    const { value } = e.target;
-    this.setState({ confirmDirty: this.state.confirmDirty || !!value });
-  };
-
-  checkResponse = (data) => {
-      if(this.state.addedSucessfully){
-        this.props.form.resetFields();
-        this.setState({
-          showSuccess:true,
-          showError : false
-      });
-    }
-    else{
-        this.setState({
-        errorMessage: data.message,
-        showSuccess:false,
-        showError : true,
-        responseStatus: "error"
-    });
-  }
-
-}
-
   render() {
     const { Option } = Select;
 
     const { getFieldDecorator } = this.props.form;
 
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-      },
-    };
-    const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-          offset: 0,
-        },
-        sm: {
-          span: 16,
-          offset: 8,
-        },
-      },
-    };
 
     return (
 
       <div className="register">
-        <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register-form">
+        <Form onSubmit={this.handleSubmit} className="register-form">
         <h2 style={{textAlign: 'center'}}>Register</h2>
           <Form.Item >
             {getFieldDecorator('First Name', {
               rules: [{ required: true, message: 'Please input first name!' }],
             })(            
-                <Input placeholder="Enter first name" />
+                <Input name="firstName" placeholder="Enter first name" onChange={this.handleChange}/>
             )}
           </Form.Item>
 
@@ -137,20 +81,14 @@ handleEmail = ()=> {
             {getFieldDecorator('Last Name', {
               rules: [{ required: true, message: 'Please input last name!' }],
             })(            
-                <Input placeholder="Enter last name" />
+                <Input name="lastName" placeholder="Enter last name" onChange={this.handleChange}/>
             )}
           </Form.Item>
           
-          <Form.Item hasFeedback>
-            {getFieldDecorator('date-picker',{
-              rules: [
-                { 
-                  type: 'object', 
-                  required: true, 
-                  message: 'Please select time!' 
-                }],
-            })(<DatePicker placeholder="select date of birth"/>)}
-        </Form.Item>
+          <Form.Item > 
+            <DatePicker  onChange={this.thisonChange}/>
+          </Form.Item >
+
 
           
           <Form.Item hasFeedback >
@@ -164,13 +102,13 @@ handleEmail = ()=> {
                   required: true,
                   message: 'Please input your E-mail!',
                 }],
-            })(<Input prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" />)}
+            })(<Input name="email" prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email"  onChange={this.handleChange}/>)}
           </Form.Item>
 
           <Form.Item>
           <Upload {...props}>
-            <Button>
-              <Icon type="upload" /> Upload Profile Image
+            <Button name="profileImageURL" onChange={this.handleChange}>
+              <Icon type="upload"/> Upload Profile Image
             </Button>
           </Upload>
         </Form.Item>
@@ -182,7 +120,7 @@ handleEmail = ()=> {
                 required: true, 
                 message: 'Please input last name!'
               }],
-          })(<Input prefix={<Icon type="global" style={{color: "grey"}} />} placeholder="Country"/>)}
+          })(<Input name="countryID" prefix={<Icon type="global" style={{color: "grey"}} />} placeholder="Country" onChange={this.handleChange}/>)}
         </Form.Item>
 
         <Form.Item hasFeedback>
@@ -192,7 +130,7 @@ handleEmail = ()=> {
                   required: true, 
                   message: 'Please input username!'
                 }],
-            })(<Input prefix={<Icon type="user" style={{ color: "grey" }} />} placeholder="Username"/>)}
+            })(<Input name="username" prefix={<Icon type="user" style={{ color: "grey" }} />} placeholder="Username" onChange={this.handleChange}/>)}
         </Form.Item>
           
           <Form.Item hasFeedback>
@@ -202,7 +140,7 @@ handleEmail = ()=> {
                   required: true,
                   message: 'Please input your password!',
                 }],
-            })(<Input.Password placeholder="password" prefix={<Icon type="lock" style={{ color: "grey"}}/>}/>)}
+            })(<Input.Password name="password" placeholder="password" prefix={<Icon type="lock" style={{ color: "grey"}}/>} onChange={this.handleChange}/>)}
           </Form.Item>
 
           <Form.Item>
@@ -250,7 +188,7 @@ handleEmail = ()=> {
             </Row>
           </Form.Item>
 
-          <Form.Item {...tailFormItemLayout} className="register-btn">
+          <Form.Item className="register-btn">
             <Button type="primary" htmlType="submit">
               Register
             </Button>
