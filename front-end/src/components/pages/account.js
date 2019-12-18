@@ -6,6 +6,8 @@ import updateInfo from "../updateInfo";
 import resetPass from "../resetPass"
 import deactivate from "../deactivate"
 import deleteAcc from "../deleteAccount"
+import security from "../securityQ&As"
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Layout,
@@ -31,6 +33,7 @@ class AccountInfo extends React.Component {
             >
               <Menu.Item key="1"><Link to="/personalInfo" />Personal Information</Menu.Item>
               <Menu.Item key="2"><Link to="/updateInfo" />Update Information</Menu.Item>
+              <Menu.Item key="2"><Link to="/security" />Security Questions</Menu.Item>
               <Menu.Item key="3"><Link to="/resetPass" />Reset Password</Menu.Item>
               <Menu.Item key="4"><Link to="/deactivate" />Deactivate</Menu.Item>
               <Menu.Item key="5"><Link to="/deleteAcc" />Delete Account</Menu.Item>
@@ -48,6 +51,7 @@ class AccountInfo extends React.Component {
             >
               <Route exact path="/personalInfo" component={personalInfo} />
               <Route exact path="/updateInfo" component={updateInfo} />
+              <Route exact path="/security" component={security} />
               <Route exact path="/resetPass" component={resetPass} />
               <Route exact path="/deactivate" component={deactivate} />
               <Route exact path="/deleteAcc" component={deleteAcc} />

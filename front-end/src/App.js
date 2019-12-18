@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import Login from './components/pages/login';
-import Register from './components/pages/register';
 import Header from './components/header';
 import Account from './components/pages/account'
 import './components/header';
@@ -13,8 +11,7 @@ function App() {
     <>
     <Header/>
     <Router>
-      <Route exact path="/" component={Login}/>
-      <Route exact path="/register" component={Register}/>
+
       <Route exact path="/account" component={Account}/>
     </Router>
     </>
