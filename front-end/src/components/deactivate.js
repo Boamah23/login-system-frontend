@@ -8,13 +8,43 @@ import {
   Icon
 } from "antd";
 
-function deactivate() {
+class Deactivate extends React.Component {
+    
+    constructor() {
+        super();
+        this.state = {
+          email: ""
+        };
+      }
+    
+      handleChange = e => {
+        this.setState({[e.target.name]:e.target.value})
+      }
+    
+      handleSubmit = e => {
+        e.preventDefault();
+        const data = { email:this.state.email }
+    
+            fetch('http://localhost:3000/api/v1.0/users/deleteAccount', { 
+              method: 'PUT',
+              headers: {
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
+        }).then(res => res.json())
+        .catch(error => console.error("Error:", error))
+        .then(response => console.log("Success:", response))
+      };
+
+      render() {
+
     return (
         <div className="account-form">
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
             <h1 style = {{textAlign: "center"}}>Deactivate</h1>
             <Form.Item>
-                <Input  prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" />
+                <Input  prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" name="email"  onChange={this.handleChange}/>
             </Form.Item>
             <Form.Item>
                 <Button className="update-btn" type="primary" htmlType="submit">
@@ -26,6 +56,8 @@ function deactivate() {
 
     );
 
+      }
+
 }
 
-export default deactivate;
+export default Deactivate;

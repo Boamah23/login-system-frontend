@@ -3,21 +3,47 @@ import "antd/dist/antd.css";
 import { Form, Icon, Input, Button } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 
-function passwordReset(){
+class PasswordReset extends React.Component{
+
+    constructor() {
+        super();
+        this.state = {
+          password: "",
+          email: ""
+        };
+      }
+    
+      handleChange = e => {
+        this.setState({[e.target.name]:e.target.value})
+      }
+    
+      handleSubmit = e => {
+        e.preventDefault();
+        const data = { password:this.state.password, email:this.state.email }
+    
+            fetch('http://localhost:3000/api/v1.0/users/passwordReset', { 
+              method: 'PUT',
+              headers: {
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
+        }).then(res => res.json())
+        .catch(error => console.error("Error:", error))
+        .then(response => console.log("Success:", response))
+      };
+
+      render() {
     return(
         <div className="account-form">
-        <Form>
+        <Form onChange={this.handleSubmit}>
             <h1 style={{textAlign: 'center'}}>Reset Password</h1>
             <FormItem>
-                    <Input placeholder="Enter Email" prefix={<Icon type="mail" style={{color: "grey"}}/>}/>
+                    <Input name="email" placeholder="Enter Email" prefix={<Icon type="mail" style={{color: "grey"}}/>} onChange={this.handleChange}/>
             </FormItem>
 
             <FormItem>
-                    <Input.Password placeholder="New Password" prefix={<Icon type="lock" style={{color: "grey"}}/>}/>
-            </FormItem>
-
-            <FormItem>
-                    <Input.Password placeholder="Confirm Password" prefix={<Icon type="mail" style={{color: "grey"}}/>}/>
+                    <Input.Password name="password" placeholder="New Password" prefix={<Icon type="lock" style={{color: "grey"}}/>} onChange={this.handleChange} />
             </FormItem>
 
             <Form.Item>
@@ -31,6 +57,8 @@ function passwordReset(){
 
     );
 
+    }
+
 }
 
-export default passwordReset;
+export default PasswordReset;
