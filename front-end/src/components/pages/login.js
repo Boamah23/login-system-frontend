@@ -2,6 +2,9 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import '../../style/login.css';
 import { Form, Icon, Input, Button } from 'antd';
+import GoogleButton from 'react-google-button';
+
+
 
 class LoginForm extends React.Component {
 
@@ -84,11 +87,20 @@ class LoginForm extends React.Component {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                   Log in
                 </Button>
+              </Form.Item>
+              <Form.Item>
+                <GoogleButton style={{width: 500}}/>
+              </Form.Item>
+              <Form.Item>
+                
+              </Form.Item>
+              <Form.Item>
+               
+              </Form.Item>
                 <div></div>
                 Or <a href="/register">register now!</a>
-              </Form.Item>
-        
           </Form>
+
           </div>
         );
 
