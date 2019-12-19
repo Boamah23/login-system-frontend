@@ -3,6 +3,9 @@ import "antd/dist/antd.css";
 import "../../style/register.css";
 import { Form, Icon, Input, Button, message, Upload,  Row, Col } from "antd";
 import { DatePicker } from 'antd';
+import moment from 'moment';
+
+
 const props = {
   name: 'file',
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -21,8 +24,11 @@ const props = {
   },
 };
 
+let date = new Date().toLocaleDateString('en-GB').replace(/\//g, "-")
 
 class RegisterForm extends React.Component {
+
+ 
 
   constructor() {
     super();
@@ -34,9 +40,9 @@ class RegisterForm extends React.Component {
       profileImageURL: "",
       password: "",
       username: "",
-      birthDate: new Date()
+      birthDate: date.split('-').reverse().join('-')
     };
-  }
+  };;
 
   handleChange = e => {
     this.setState({[e.target.name]:e.target.value})
@@ -54,13 +60,19 @@ class RegisterForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data)
-}).then(res => res.json())
-.catch(error => console.error("Error:", error))
-.then(response => console.log("Success:", response))
+}).then((res) => {
+  res.json()
+  console.log(res.status)
+  if (res.status === 201){
+    this.props.history.push('/account')
+}
+
+}) 
 };
   render() {
 
     const { getFieldDecorator } = this.props.form;
+    
 
 
     return (
@@ -85,7 +97,8 @@ class RegisterForm extends React.Component {
           </Form.Item>
           
           <Form.Item > 
-            <DatePicker  onChange={this.thisonChange}/>
+            <DatePicker value={moment(new Date())} 
+                  onChange={this.thisonChange}/>
           </Form.Item >
 
 
@@ -105,8 +118,8 @@ class RegisterForm extends React.Component {
           </Form.Item>
 
           <Form.Item>
-          <Upload {...props}>
-            <Button name="profileImageURL" onChange={this.handleChange}>
+          <Upload {...props} name="profileImageURL" onChange={this.handleChange}>
+            <Button>
               <Icon type="upload"/> Upload Profile Image
             </Button>
           </Upload>

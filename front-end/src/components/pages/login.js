@@ -31,14 +31,22 @@ class LoginForm extends React.Component {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data)
-    }).then(res => res.json())
-    .catch(error => console.error("Error:", error))
-    .then(response => console.log("Success:", response))
+    }).then((res) => {
+      res.json()
+      console.log(res.status)
+      if (res.status === 201){
+        this.props.history.push('/account')
+    }
+    
+    })  
   };
+
+  
 
 
 
     render() {
+
 
       const { getFieldDecorator } = this.props.form;
       
