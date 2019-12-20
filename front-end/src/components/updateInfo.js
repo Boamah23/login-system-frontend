@@ -6,28 +6,7 @@ import {
   Form,
   Button,
   Icon,
-  Upload,
-  message,
-  Avatar
 } from "antd";
-
-const props = {
-    name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    headers: {
-      authorization: 'authorization-text',
-    },
-    onChange(info) {
-      if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
   
 
 class UpdateInfo extends React.Component{
@@ -40,7 +19,6 @@ class UpdateInfo extends React.Component{
       about: "",
       email: "",
       countryID: "",
-      profileImageURL: ""
     };
   }
 
@@ -67,13 +45,7 @@ class UpdateInfo extends React.Component{
     <div className="account-form">
     <Form onSubmit={this.handleSubmit}>
         <h1 style={{textAlign: 'center'}}>Update account information</h1>
-    <Form.Item>
-        <Avatar size={64} icon="user" />
-        <Button
-        size="small"
-        style={{ marginLeft: 20, verticalAlign: "middle" }}
-        >Change profile picture</Button>
-    </Form.Item>
+
     <Form.Item >           
           <Input name="firstName" placeholder="Enter first name" onChange={this.handleChange}/>
     </Form.Item>
@@ -84,14 +56,6 @@ class UpdateInfo extends React.Component{
     
     <Form.Item>
         <Input name="email" prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" onChange={this.handleChange}/>
-    </Form.Item>
-
-    <Form.Item>
-        <Upload {...props}>
-        <Button>
-            <Icon name="profileImageURL" type="upload" onChange={this.handleChange}/> Upload Profile Image
-        </Button>
-        </Upload>
     </Form.Item>
 
     <Form.Item>

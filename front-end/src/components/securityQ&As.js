@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Form, Icon, Input, Button, Select, Row, Col } from "antd";
+import { Form, Icon, Input, Button, Row, Col } from "antd";
 
 class SecurityQuestions extends React.Component{
 
@@ -37,7 +37,6 @@ class SecurityQuestions extends React.Component{
 
       render() {
 
-        const { Option } = Select;
     return(
         <div className="account-form">
         <Form onChange={this.handleSubmit}>
@@ -48,13 +47,7 @@ class SecurityQuestions extends React.Component{
             <Form.Item>
             <Row gutter={8}>
               <Col span={12}>
-                  <Select name="securityQuestion1" defaultValue="Select security question 2" onChange={this.handleChange}>
-                      
-                      <Option name="securityQuestion1" value="Mothers maiden name">Mothers maiden name</Option>
-                      <Option name="securityQuestion1" value="Model of first car">Model of first car</Option>
-                      <Option name="securityQuestion1" value="Favouite movie">Favouite movie</Option>
-                      <Option name="securityQuestion1" value="Road you grew up on">Road you grew up on</Option>
-                  </Select>
+                  <Input name="securityQuestion1" placeholder="Security question 1" onChange={this.handleChange}/>
               </Col>
               <Col span={12}>
                   <Input name="securityAnswer1" placeholder="Security answer 1" onChange={this.handleChange}/>
@@ -65,12 +58,7 @@ class SecurityQuestions extends React.Component{
           <Form.Item>
             <Row gutter={8}>
               <Col span={12}>
-                  <Select name="securityQuestion2" defaultValue="Select security question 2" onChange={this.handleChange}>
-                      <Option name="securityQuestion2" value="Name of primary school">Name of primary school</Option>
-                      <Option name="securityQuestion2" value="Place of birth">Place of birth</Option>
-                      <Option name="securityQuestion2" value="Favourite colour">Favourite colour</Option>
-                      <Option name="securityQuestion2" value="Favourite book">Favourite book</Option>
-                  </Select>
+                    <Input name="securityQuestion2" placeholder="Security question 2" onChange={this.handleChange}/>
               </Col>
               <Col span={12}>
                   <Input name="securityAnswer2" placeholder="Security answer 2" onChange={this.handleChange}/>

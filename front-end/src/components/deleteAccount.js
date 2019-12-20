@@ -26,7 +26,7 @@ class DeleteAccount extends React.Component {
         e.preventDefault();
         const data = { email:this.state.email }
     
-            fetch('http://localhost:3000/api/v1.0/users/deactivateAccount', { 
+            fetch('http://localhost:3000/api/v1.0/users/deleteAccount', { 
               method: 'PUT',
               headers: {
                 'Accept' : 'application/json',

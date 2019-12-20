@@ -5,7 +5,8 @@ import {
   Input,
   Form,
   Button,
-  Icon
+  Icon,
+  message
 } from "antd";
 
 class Deactivate extends React.Component {
@@ -25,7 +26,7 @@ class Deactivate extends React.Component {
         e.preventDefault();
         const data = { email:this.state.email }
     
-            fetch('http://localhost:3000/api/v1.0/users/deleteAccount', { 
+            fetch('http://localhost:3000/api/v1.0/users/deactivateAccount', { 
               method: 'PUT',
               headers: {
                 'Accept' : 'application/json',
@@ -39,6 +40,10 @@ class Deactivate extends React.Component {
 
       render() {
 
+        const success = () => {
+          message.success('This account has been deactivated');
+        };
+
     return (
         <div className="account-form">
         <Form onSubmit={this.handleSubmit}>
@@ -47,7 +52,7 @@ class Deactivate extends React.Component {
                 <Input  prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" name="email"  onChange={this.handleChange}/>
             </Form.Item>
             <Form.Item>
-                <Button className="update-btn" type="primary" htmlType="submit">
+                <Button className="update-btn" type="primary" onClick={success} htmlType="submit">
                     Deactivate Account
                 </Button>
             </Form.Item>

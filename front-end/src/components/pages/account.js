@@ -32,11 +32,11 @@ class AccountInfo extends React.Component {
               style={{ height: "100%", borderRight: 0 }}
             >
               <Menu.Item key="1"><Link to="/personalInfo" />Personal Information</Menu.Item>
-              <Menu.Item key="2"><Link to="/updateInfo" />Update Information</Menu.Item>
-              <Menu.Item key="2"><Link to="/security" />Security Questions</Menu.Item>
-              <Menu.Item key="3"><Link to="/resetPass" />Reset Password</Menu.Item>
-              <Menu.Item key="4"><Link to="/deactivate" />Deactivate</Menu.Item>
-              <Menu.Item key="5"><Link to="/deleteAcc" />Delete Account</Menu.Item>
+              <Menu.Item key="3"><Link to="/updateInfo" />Update Information</Menu.Item>
+              <Menu.Item key="4"><Link to="/security" />Security Questions</Menu.Item>
+              <Menu.Item key="5"><Link to="/resetPass" />Reset Password</Menu.Item>
+              <Menu.Item key="6"><Link to="/deactivate" />Deactivate</Menu.Item>
+              <Menu.Item key="7"><Link to="/deleteAcc" />Delete Account</Menu.Item>
             </Menu>
           </Sider>
           <Layout style={{ padding: "0 24px 24px" }}>
