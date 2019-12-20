@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
     super();
     this.state = {
       password: "",
-      username: ""
+      email: ""
     };
   }
 
@@ -22,7 +22,7 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const data = { password:this.state.password, username:this.state.username }
+    const data = { password:this.state.password, email:this.state.email }
 
         fetch('http://localhost:3000/api/v1.0/users/login', { 
           method: 'POST',
@@ -55,15 +55,15 @@ class LoginForm extends React.Component {
             <Form onSubmit={this.handleSubmit} className="login-form">
             <h2 style={{textAlign: 'center'}}>Login</h2>
               <Form.Item>
-                {getFieldDecorator('username', {
+                {getFieldDecorator('email', {
                   rules:[{
-                    required: true, message: "Please input username"
+                    required: true, type: 'email', message: "Please input email"
                   }],
                 })(
                   <Input
                   prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Username"
-                  name = "username"
+                  placeholder="Email"
+                  name = "email"
                   onChange={this.handleChange} 
                 />,
                 )}

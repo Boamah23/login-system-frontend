@@ -118,7 +118,7 @@ class RegisterForm extends React.Component {
           </Form.Item>
 
           <Form.Item>
-          <Upload {...props} name="profileImageURL" onChange={this.handleChange}>
+          <Upload {...props} >
             <Button>
               <Icon type="upload"/> Upload Profile Image
             </Button>
