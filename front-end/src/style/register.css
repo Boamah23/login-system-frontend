@@ -1,5 +1,5 @@
 .register-form {
-    min-width: 500px;
+    min-width: 600px;
   }
 
   .register-btn {
@@ -17,5 +17,20 @@
   .title{
     margin: 10px;
     text-align: center;
+  }
+
+  .ant-btn, .ant-btn:active, .ant-btn:focus{
+    width: 100%;
+  }
+
+  .ant-col-sm-offset-8 {
+    margin-left: 0
+  }
+
+  .ant-col-sm-16 {
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
   }
   
