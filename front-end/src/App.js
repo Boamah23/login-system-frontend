@@ -8,6 +8,7 @@ import './components/header';
 import resetPass from './components/pages/resetPass';
 import {BrowserRouter as Router, Route
 } from "react-router-dom";
+import PasswordReset from './components/pages/resetPass';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/" component={Login}/>
       <Route exact path="/register" component={Register}/>
       <Route exact path="/resetPassword" component={resetPass}/>
+      <Route exact path="/PasswordReset" component={PasswordReset}/>
     </Router>
     </>
 

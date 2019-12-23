@@ -91,7 +91,7 @@ class LoginForm extends React.Component {
               </Form.Item>
 
               <Form.Item>
-                <a className="login-form-forgot" href="/resetPass">
+                <a className="login-form-forgot" href="/PasswordReset">
                   Forgot password
                 </a>
                 <Button type="primary" htmlType="submit" className="login-form-button">

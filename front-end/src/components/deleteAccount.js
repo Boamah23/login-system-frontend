@@ -1,12 +1,12 @@
 import React from "react";
 import "antd/dist/antd.css";
 import "../index.css";
-
 import {
   Input,
   Form,
   Button,
-  Icon
+  Icon,
+  message
 } from "antd";
 
 class DeleteAccount extends React.Component {
@@ -14,7 +14,8 @@ class DeleteAccount extends React.Component {
     constructor() {
         super();
         this.state = {
-          email: ""
+          email: "",
+          password: ""
         };
       }
     
@@ -24,7 +25,7 @@ class DeleteAccount extends React.Component {
     
       handleSubmit = e => {
         e.preventDefault();
-        const data = { email:this.state.email }
+        const data = { email:this.state.email, password:this.state.password }
     
             fetch('http://localhost:3000/api/v1.0/users/deleteAccount', { 
               method: 'PUT',
@@ -39,15 +40,23 @@ class DeleteAccount extends React.Component {
       };
 
       render() {
+
+        const success = () => {
+            message.success('This account has been deleted');
+          };
+
     return (
         <div className="account-form">
         <Form onSubmit={this.handleSubmit}>
             <h1 style = {{textAlign: "center"}}>Delete Account</h1>
             <Form.Item>
-                <Input  prefix={<Icon name="email" type="mail" style={{color: "grey"}} />} placeholder="Enter email" onChange={this.handleChange}/>
+                <Input  prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" name="email"  onChange={this.handleChange}/>
             </Form.Item>
             <Form.Item>
-                <Button className="update-btn" type="primary" htmlType="submit">
+                <Input  prefix={<Icon type="lock" style={{color: "grey"}} />} placeholder="Enter password" name="password"  onChange={this.handleChange}/>
+            </Form.Item>
+            <Form.Item>
+                <Button className="update-btn" type="primary" htmlType="submit" onClick={success}>
                     Delete Account
                 </Button>
             </Form.Item>

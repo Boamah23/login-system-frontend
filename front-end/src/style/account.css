@@ -24,3 +24,7 @@ h1{
     font-size: 16px;
     line-height: 1.5;
 }
+
+.ant-layout{
+    height: 600px;
+}

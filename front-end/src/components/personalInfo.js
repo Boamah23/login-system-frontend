@@ -8,7 +8,7 @@ class PersonalInfo extends Component{
   constructor(props){
     super(props);
     this.state = {
-      items: []
+      items: [],
     };
   }
 
@@ -42,6 +42,9 @@ class PersonalInfo extends Component{
             )};
           {items.map((item) => 
             <Descriptions.Item label="Last name">{item.lastName}</Descriptions.Item>
+            )};
+          {items.map((item) => 
+            <Descriptions.Item label="Username">{item.username}</Descriptions.Item>
             )};
           {items.map((item) => 
             <Descriptions.Item label="profile Image URL">{item.profileImageURL}</Descriptions.Item>

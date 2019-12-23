@@ -38,14 +38,11 @@ class PasswordReset extends React.Component{
     return(
         <div className="account-form">
         <Form onChange={this.handleSubmit}>
-            <h1 style={{textAlign: 'center'}}>Reset Password</h1>
+            <h1 style={{textAlign: 'center'}}>Forgot Password</h1>
             <FormItem>
                     <Input name="email" placeholder="Enter Email" prefix={<Icon type="mail" style={{color: "grey"}}/>} onChange={this.handleChange}/>
             </FormItem>
 
-            <FormItem>
-                    <Input.Password name="password" placeholder="New Password" prefix={<Icon type="lock" style={{color: "grey"}}/>} onChange={this.handleChange} />
-            </FormItem>
 
             <Form.Item>
                 <Button className="update-btn" type="primary" htmlType="submit">

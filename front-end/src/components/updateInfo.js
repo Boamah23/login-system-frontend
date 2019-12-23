@@ -19,6 +19,7 @@ class UpdateInfo extends React.Component{
       about: "",
       email: "",
       countryID: "",
+      username: ""
     };
   }
 
@@ -28,7 +29,7 @@ class UpdateInfo extends React.Component{
 
   handleSubmit = e => {
     e.preventDefault();
-    const data = { firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, countryID:this.state.countryID, profileImageURL:this.state.profileImageURL }
+    const data = { firstName:this.state.firstName, lastName:this.state.lastName, username:this.state.username, email:this.state.email, about:this.state.about, countryID:this.state.countryID, profileImageURL:this.state.profileImageURL }
         fetch('http://localhost:3000/api/v1.0/users/updateAccount', { 
           method: 'PUT',
           headers: {
@@ -52,6 +53,9 @@ class UpdateInfo extends React.Component{
 
     <Form.Item >           
           <Input name="lastName" placeholder="Enter last name" onChange={this.handleChange}/>
+    </Form.Item>
+    <Form.Item >           
+          <Input name="username" placeholder="Enter username" onChange={this.handleChange}/>
     </Form.Item>
     
     <Form.Item>

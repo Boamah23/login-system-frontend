@@ -40,7 +40,7 @@ class SecurityQuestions extends React.Component{
     return(
         <div className="account-form">
         <Form onChange={this.handleSubmit}>
-            <h1 style={{textAlign: 'center'}}>Reset Password</h1>
+            <h1 style={{textAlign: 'center'}}>Security Questions</h1>
             <Form.Item>
                 <Input  prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" name="email"  onChange={this.handleChange}/>
             </Form.Item>

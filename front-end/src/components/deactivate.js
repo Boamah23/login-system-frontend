@@ -14,7 +14,8 @@ class Deactivate extends React.Component {
     constructor() {
         super();
         this.state = {
-          email: ""
+          email: "",
+          password: ""
         };
       }
     
@@ -24,7 +25,7 @@ class Deactivate extends React.Component {
     
       handleSubmit = e => {
         e.preventDefault();
-        const data = { email:this.state.email }
+        const data = { email:this.state.email, password:this.state.password }
     
             fetch('http://localhost:3000/api/v1.0/users/deactivateAccount', { 
               method: 'PUT',
@@ -50,6 +51,9 @@ class Deactivate extends React.Component {
             <h1 style = {{textAlign: "center"}}>Deactivate</h1>
             <Form.Item>
                 <Input  prefix={<Icon type="mail" style={{color: "grey"}} />} placeholder="Enter email" name="email"  onChange={this.handleChange}/>
+            </Form.Item>
+            <Form.Item>
+                <Input  prefix={<Icon type="lock" style={{color: "grey"}} />} placeholder="Enter password" name="password"  onChange={this.handleChange}/>
             </Form.Item>
             <Form.Item>
                 <Button className="update-btn" type="primary" onClick={success} htmlType="submit">
