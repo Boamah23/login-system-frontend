@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Header from './components/header';
 import Account from './components/pages/account'
-import Recaptcha from 'react-recaptcha'
 import Login from './components/pages/login';
 import Register from './components/pages/register';
 import './components/header';
