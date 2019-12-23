@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Header from './components/header';
 import Account from './components/pages/account'
+import Login from './components/pages/login';
+import Register from './components/pages/register';
 import './components/header';
 import resetPass from './components/pages/resetPass';
 import {BrowserRouter as Router, Route

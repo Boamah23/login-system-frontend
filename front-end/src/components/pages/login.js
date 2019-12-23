@@ -35,6 +35,8 @@ class LoginForm extends React.Component {
       res.json()
       console.log(res.status)
       if (res.status === 201){
+      localStorage.setItem('email', this.state.email);
+      localStorage.setItem('pass', this.state.password);
         this.props.history.push('/account')
     }
     
